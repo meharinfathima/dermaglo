@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Daily Skincare Progress</h2>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Log Progress Form -->
+        <form method="POST">
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Morning Routine:</label>
+                <input type="checkbox" name="morning_routine"> Completed
+            </div>
+
+            <div class="mb-3">
+                <label>Evening Routine:</label>
+                <input type="checkbox" name="evening_routine"> Completed
+            </div>
+
+            <button type="submit" class="btn btn-primary">Log Progress</button>
+        </form>
+
+        <!-- Progress History -->
+        <h3 class="mt-4">Your Progress History</h3>
+        <ul class="list-group">
+            {% for entry in progress %}
+                <li class="list-group-item">
+                    Date: {{ entry.date }} -
+                    Morning: {{ "Completed" if entry.morning_routine_completed else "Not Completed" }},
+                    Evening: {{ "Completed" if entry.evening_routine_completed else "Not Completed" }}
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- Navigation Buttons -->
+<div class="button-group mt-4">
+    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+    <a href="{{ url_for('logout') }}" class="btn danger">Logout</a>
+</div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
