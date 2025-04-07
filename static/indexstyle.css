@@ -1,0 +1,180 @@
+/* === Global Styles === */
+body {
+    background-color: #ffe6f2; /* soft pastel pink */
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #d63384;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #b82867;
+}
+
+/* === Headings === */
+h1 {
+    color: #d63384;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #d63384;
+    margin-bottom: 20px;
+}
+
+/* === Centered Container for Pages === */
+.container {
+    background-color: #fff0f5;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* === Forms === */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+/* Radio and Checkbox Fields */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Submit Buttons */
+input[type="submit"],
+button,
+.btn {
+    padding: 12px 20px;
+    background-color: #d63384;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.btn:hover {
+    background-color: #b82867;
+}
+
+/* Flash Messages */
+.flash {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flash.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Routine List */
+.routine-section {
+    margin: 20px 0;
+}
+
+.routine-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.routine-section li {
+    background-color: #fce4ec;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    color: #444;
+}
+
+/* Table for Progress */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #f3d1e2;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f8d7ec;
+    color: #d63384;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input[type="submit"], .btn {
+        font-size: 0.95rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
