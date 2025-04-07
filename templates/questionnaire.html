@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Questionnaire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css', v='2.1') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Skin Type Questionnaire</h2>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Form -->
+        <form method="POST" action="{{ url_for('questionnaire') }}">
+            {{ form.hidden_tag() }}  <!-- CSRF Token -->
+
+            <!-- Skin Type -->
+            <div class="mb-3">
+                <label class="form-label">1. What is your skin type?</label><br>
+                {% for subfield in form.skin_type %}
+                    <div class="form-check">
+                        {{ subfield(class="form-check-input") }}
+                        {{ subfield.label(class="form-check-label") }}
+                    </div>
+                {% endfor %}
+                {% if form.skin_type.errors %}
+                    <div class="text-danger">{{ form.skin_type.errors[0] }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Breakouts -->
+            <div class="mb-3">
+                <label class="form-label">2. How often do you experience breakouts?</label><br>
+                {% for subfield in form.breakouts %}
+                    <div class="form-check">
+                        {{ subfield(class="form-check-input") }}
+                        {{ subfield.label(class="form-check-label") }}
+                    </div>
+                {% endfor %}
+                {% if form.breakouts.errors %}
+                    <div class="text-danger">{{ form.breakouts.errors[0] }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Sensitivity -->
+            <div class="mb-3">
+                <label class="form-label">3. Is your skin sensitive?</label><br>
+                {% for subfield in form.sensitivity %}
+                    <div class="form-check">
+                        {{ subfield(class="form-check-input") }}
+                        {{ subfield.label(class="form-check-label") }}
+                    </div>
+                {% endfor %}
+                {% if form.sensitivity.errors %}
+                    <div class="text-danger">{{ form.sensitivity.errors[0] }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Concerns -->
+            <div class="mb-3">
+                <label class="form-label">4. Select your skin concerns:</label><br>
+                {% for subfield in form.concerns %}
+    <div class="form-check">
+        {{ subfield(class="form-check-input") }}
+        {{ subfield.label(class="form-check-label") }}
+    </div>
+{% endfor %}
+
+                {% if form.concerns.errors %}
+                    <div class="text-danger">{{ form.concerns.errors[0] }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-3">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
