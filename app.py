@@ -105,6 +105,12 @@ def home():
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
+
+        
+        if len(form.username.data.strip()) == 0:
+            flash("Username cannot be empty or spaces only.", "danger")
+            return redirect(url_for('signup'))
+
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user:
             flash('Email already registered. Please log in.', 'danger')
@@ -118,6 +124,7 @@ def signup():
         return redirect(url_for('login'))
 
     return render_template('signup.html', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -260,4 +267,5 @@ def logout():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+
     app.run(debug=True)
